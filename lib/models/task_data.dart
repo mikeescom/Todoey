@@ -8,6 +8,10 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
+  Task getTask(int index) {
+    return _tasks[index];
+  }
+
   String getTaskName(int index) {
     return _tasks[index].name;
   }
@@ -20,6 +24,11 @@ class TaskData extends ChangeNotifier {
     _tasks.add(Task(
       name: newTaskTitle,
     ));
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleDone();
     notifyListeners();
   }
 }
